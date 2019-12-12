@@ -1,6 +1,15 @@
 from User import User
 
+
+def openConfig():
+    config = open("config.json", 'w', encoding='utf-8')
+    config.write("test")
+    config.close()
+
+
 if __name__ == '__main__':
+    openConfig()
+
     studentId = input("学号：")
     name = input("姓名：")
     classId = input("班号：")
