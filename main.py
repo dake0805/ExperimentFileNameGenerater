@@ -14,9 +14,6 @@ if __name__ == '__main__':
     array.append(user.studentId)
     array.append(user.name)
 
-    result = ""
-
-    for index in range(len(array)):
-        result += array[index] + delimiter
+    result = delimiter.join(array)
 
     print(result)
