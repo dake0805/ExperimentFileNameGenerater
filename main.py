@@ -1,38 +1,36 @@
 from qtpy import QtWidgets
-
-from User import User
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
 from ui.mainWindow import Ui_MainWindow
 from ui.newUserDialog import Ui_Dialog
 
-global MainWindow
-global mainWindowUI
+
+# def openConfig():
+#     config = open("config.json", 'w', encoding='utf-8')
+#     config.write("test")
+#     config.close()
 
 
-def openConfig():
-    config = open("config.json", 'w', encoding='utf-8')
-    config.write("test")
-    config.close()
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__(parent)
+        self.setupUi(self)
+        addUserButton = AddUserButton()
+        button = self.add_user_button
+        button.clicked.connect(addUserButton.show)
 
 
-# def addUserClick():
+class AddUserButton(QtWidgets.QDialog, Ui_Dialog):
+    def __init__(self):
+        super(AddUserButton, self).__init__()
+        self.setupUi(self)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    MainWindow = QMainWindow()
-    mainWindowUI = Ui_MainWindow()
-    mainWindowUI.setupUi(MainWindow)
-    MainWindow.show()
-    newUserDialogUI = Ui_Dialog()
-    dialog = QtWidgets.QDialog()
-    newUserDialogUI.setupUi(dialog)
-    button = mainWindowUI.add_user_button
-    button.clicked.connect(dialog.show)
-
-    # addUserClick()
+    win = MainWindow()
+    win.show()
     sys.exit(app.exec_())
 
     # openConfig()
