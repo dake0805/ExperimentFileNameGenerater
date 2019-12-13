@@ -1,4 +1,7 @@
 from User import User
+from PyQt5.QtWidgets import QApplication, QMainWindow
+import sys
+from ui import mainUI
 
 
 def openConfig():
@@ -8,6 +11,14 @@ def openConfig():
 
 
 if __name__ == '__main__':
+
+    app = QApplication(sys.argv)
+    MainWindow = QMainWindow()
+    ui = mainUI.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
     openConfig()
 
     studentId = input("学号：")
@@ -24,5 +35,6 @@ if __name__ == '__main__':
     array.append(user.name)
 
     result = delimiter.join(array)
-
     print(result)
+
+
