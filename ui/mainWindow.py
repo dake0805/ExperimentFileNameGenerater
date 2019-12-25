@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.add_user_button.setText(_translate("MainWindow", "Add User"))
         item = self.tableWidget.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "New Row"))
+        item.setText(_translate("MainWindow", "1"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "studentId"))
         item = self.tableWidget.horizontalHeaderItem(1)
