@@ -30,22 +30,12 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>190</y>
+      <x>100</x>
+      <y>200</y>
       <width>681</width>
       <height>241</height>
      </rect>
     </property>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>studentId</string>
-     </property>
-    </column>
     <column>
      <property name="text">
       <string>name</string>
@@ -53,7 +43,17 @@
     </column>
     <column>
      <property name="text">
+      <string>studentId</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
       <string>classId</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>choose</string>
      </property>
     </column>
    </widget>

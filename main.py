@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 import sys
 
 import utils
+from User import User
 from ui.mainWindow import Ui_MainWindow
 from ui.newUserDialog import Ui_Dialog
 
@@ -22,7 +23,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.loadUserTable()
 
     def showDialog(self):
-        # self.setWindowModality(Qt.ApplicationModal)
         self.addUserDialog = AddUserDialog()
         self.addUserDialog.setWindowTitle('对话框')
         self.addUserDialog.setWindowModality(Qt.ApplicationModal)
@@ -37,11 +37,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 加载用户
         self.loadUser()
 
-    def tableAddLine(self, user):
+    def tableAddLine(self, newUser):
+        user = User(newUser["studentId"], newUser["name"], newUser["classId"])
         table = self.tableWidget
         row = table.rowCount()
         table.setRowCount(row + 1)
-        id = str(1)
+        studentId = user.studentId
+        name = user.name
+        classId = user.classId
         ##下面六行用于生成居中的checkbox，不知道有没有别的好方法
         ck = QCheckBox()
         h = QHBoxLayout()
@@ -49,10 +52,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         h.addWidget(ck)
         w = QWidget()
         w.setLayout(h)
-        name = "testName"
-        table.setItem(row, 0, QTableWidgetItem(id))
-        table.setCellWidget(row, 1, w)
-        table.setItem(row, 2, QTableWidgetItem(name))
+        table.setItem(row, 0, QTableWidgetItem(name))
+        table.setItem(row, 1, QTableWidgetItem(studentId))
+        table.setItem(row, 2, QTableWidgetItem(classId))
+        table.setCellWidget(row, 3, w)
 
     def loadUser(self):
         users = utils.loadUsers()
