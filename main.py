@@ -1,5 +1,6 @@
+from PyQt5.QtCore import Qt
 from qtpy import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 import sys
 
 from ui.mainWindow import Ui_MainWindow
@@ -16,14 +17,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        addUserButton = AddUserButton()
+        addUserDialog = AddUserDialog()
         button = self.add_user_button
-        button.clicked.connect(addUserButton.show)
+        button.clicked.connect(self.showDialog)
+
+    def showDialog(self):
+        # self.setWindowModality(Qt.ApplicationModal)
+        self.addUserDialog = AddUserDialog()
+        self.addUserDialog.setWindowTitle('对话框')
+        self.addUserDialog.setWindowModality(Qt.ApplicationModal)
+        self.addUserDialog.show()
 
 
-class AddUserButton(QtWidgets.QDialog, Ui_Dialog):
-    def __init__(self):
-        super(AddUserButton, self).__init__()
+class AddUserDialog(QDialog, Ui_Dialog):
+    def __init__(self, parent=None):
+        super(AddUserDialog, self).__init__(parent)
         self.setupUi(self)
 
 
