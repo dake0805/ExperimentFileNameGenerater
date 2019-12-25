@@ -67,6 +67,14 @@ class AddUserDialog(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super(AddUserDialog, self).__init__(parent)
         self.setupUi(self)
+        add = self.add_user
+        cancel = self.cancel
+        add.clicked.connect(self.addUser)
+        cancel.clicked.connect(self.close)
+
+    def addUser(self):
+        user = User(self.student_id.text(), self.name.text(), self.class_id.text())
+        utils.saveUser(user)
 
 
 if __name__ == '__main__':
