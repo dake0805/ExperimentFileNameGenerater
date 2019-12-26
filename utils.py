@@ -14,10 +14,13 @@ def loadUsers():
 # TODO
 def saveUser(user):
     config = open("config.json", 'r+', encoding='utf-8')
-    # TODO 新创建文件
     # if(config.readline().)
     configJson = config.read()
     data = json.loads(configJson)
-    list(data['users']).append(user.to_dict())
-    data = json.dumps(configJson)
-    config.write(data)
+    config.seek(0)
+    config.truncate()  # 清空文件
+    a = list(data['users'])
+    a.append(user.to_dict())
+    data['users'] = a
+    json.dump(data, config)
+    config.close()
