@@ -20,15 +20,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         button.clicked.connect(self.showDialog)
 
         # 已有用户列表
-        self.loadUserTable()
+        self.initUserTable()
 
     def showDialog(self):
-        self.addUserDialog = AddUserDialog()
+        self.addUserDialog = AddUserDialog(self)
         self.addUserDialog.setWindowTitle('对话框')
         self.addUserDialog.setWindowModality(Qt.ApplicationModal)
         self.addUserDialog.show()
 
-    def loadUserTable(self):
+    def initUserTable(self):
         # 设置表格属性
         table = self.tableWidget
         table.setFrameShape(QFrame.NoFrame)
@@ -64,7 +64,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
 class AddUserDialog(QDialog, Ui_Dialog):
-    def __init__(self, parent=None):
+
+    def __init__(self, mainWindow, parent=None, ):
+        self.mainWindow = mainWindow
         super(AddUserDialog, self).__init__(parent)
         self.setupUi(self)
         add = self.add_user
@@ -75,6 +77,8 @@ class AddUserDialog(QDialog, Ui_Dialog):
     def addUser(self):
         user = User(self.student_id.text(), self.name.text(), self.class_id.text())
         utils.saveUser(user)
+        self.mainWindow.loadUser()
+        self.close()
 
 
 if __name__ == '__main__':
