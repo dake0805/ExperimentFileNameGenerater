@@ -1,6 +1,7 @@
 from random import random
 
 from PyQt5.QtCore import Qt
+from qtconsole.qt import QtCore
 from qtpy import QtWidgets
 from PyQt5.QtWidgets import *
 import sys
@@ -12,6 +13,8 @@ from ui.newUserDialog import Ui_Dialog
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
+    chooseList = []
+
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -21,6 +24,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 已有用户列表
         self.initUserTable()
+        # 选择列表click
+        self.toChooseListInit()
 
     def showDialog(self):
         self.addUserDialog = AddUserDialog(self)
@@ -63,6 +68,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tableWidget.setRowCount(0)
         for user in users:
             self.tableAddLine(user)
+
+    def toChooseListInit(self):
+        studentIdButton = self.choose_studentId
+        classIdButton = self.choose_classId
+        nameButton = self.choose_name
+        customButton = self.choose_custom
+        studentIdButton.clicked.connect(self.clickChooseStudent)
+        classIdButton.clicked.connect(self.clickChooseClassId)
+        nameButton.clicked.connect(self.clickChooseName)
+        #self.generate_result_button.clicked.connect(self.generateResult)
+
+    def clickChooseStudent(self):
+        self.chooseList.append("studentId")
+        self.choose_form.addItem("studentId")
+        #self.choose_form.repaint()
+
+    def clickChooseClassId(self):
+        self.chooseList.append("classId")
+
+    def clickChooseName(self):
+        self.chooseList.append("name")
+
+    #
+    # def updateChooseList(self, str):
+    #     self.choose_form.
+
+    def generaateResult(self):
+        choosedList = self.choose_form
+
+    # def clickChooseCustom(self):
+    #     # self.chooseList.append("studentId")
+    #     # self.choosed_label.text() + "  "
 
 
 class AddUserDialog(QDialog, Ui_Dialog):
