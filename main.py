@@ -13,7 +13,6 @@ from ui.newUserDialog import Ui_Dialog
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    chooseList = []
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -69,6 +68,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for user in users:
             self.tableAddLine(user)
 
+    # click绑定可选择按钮
+    # TODO 自定义，弹出Dialog完成自定义输入
     def toChooseListInit(self):
         studentIdButton = self.choose_studentId
         classIdButton = self.choose_classId
@@ -77,24 +78,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         studentIdButton.clicked.connect(self.clickChooseStudent)
         classIdButton.clicked.connect(self.clickChooseClassId)
         nameButton.clicked.connect(self.clickChooseName)
-        #self.generate_result_button.clicked.connect(self.generateResult)
+        # self.generate_result_button.clicked.connect(self.generateResult)
 
     def clickChooseStudent(self):
-        self.chooseList.append("studentId")
         self.choose_form.addItem("studentId")
-        #self.choose_form.repaint()
 
     def clickChooseClassId(self):
-        self.chooseList.append("classId")
+        self.choose_form.addItem("classId")
 
     def clickChooseName(self):
-        self.chooseList.append("name")
+        self.choose_form.addItem("name")
 
-    #
-    # def updateChooseList(self, str):
-    #     self.choose_form.
-
-    def generaateResult(self):
+    # TODO 从choose_form得到已选，生成结果
+    # TODO 读取已选的用户列表check box
+    def generateResult(self):
         choosedList = self.choose_form
 
     # def clickChooseCustom(self):
