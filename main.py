@@ -84,7 +84,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         studentIdButton.clicked.connect(self.clickChooseStudent)
         classIdButton.clicked.connect(self.clickChooseClassId)
         nameButton.clicked.connect(self.clickChooseName)
-        # customButton.clicked.connect(self.clickChooseCustom)
+        customButton.clicked.connect(self.clickChooseCustom)
         clearButton.clicked.connect(self.clickClear)
         self.generate_result_button.clicked.connect(self.generateResult)
 
@@ -97,6 +97,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def clickChooseName(self):
         self.choose_form.addItem("name")
 
+    def clickChooseCustom(self):
+        text, okPressed = QInputDialog.getText(self, "自定义", "Input:", QLineEdit.Normal, "")
+        if okPressed and text != '':
+            self.choose_form.addItem(text)
+
     def clickClear(self):
         chooseList = self.choose_form
         if chooseList.currentRow() == -1:
@@ -107,6 +112,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # TODO 从choose_form得到已选，生成结果
     # TODO 读取已选的用户列表check box
     def generateResult(self):
+        global result
         choosedKindList = []
         for i in range(self.choose_form.count()):
             choosedKindList.append(self.choose_form.item(i).text())
@@ -116,20 +122,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 break
         for userItem in self.checkUserList:
             if userItem[3].isChecked():
-                result = ""
+                userInfoArray = []
                 for choosedInfo in choosedKindList:
                     if choosedInfo == "name":
-                        result += userItem[0]
+                        userInfoArray.append(userItem[0])
                     elif choosedInfo == "studentId":
-                        result += userItem[1]
+                        userInfoArray.append(userItem[1])
                     elif choosedInfo == "classId":
-                        result += userItem[2]
+                        userInfoArray.append(userItem[2])
                     else:
-                        # TODO 加入自定义
-                        result += ""
-                    result += self.choose_delimiter.currentText()
-                # 倒着替换
-                result = result[::-1].replace(self.choose_delimiter.currentText()[::-1], ""[::-1], 1)[::-1]
+                        userInfoArray.append(choosedInfo)
+                    result = self.choose_delimiter.currentText().join(userInfoArray)
                 self.textBrowser.append(result)
 
         # def clickChooseCustom(self):
@@ -161,8 +164,6 @@ if __name__ == '__main__':
     win.show()
     sys.exit(app.exec_())
 
-    # openConfig()
-    #
     # studentId = input("学号：")
     # name = input("姓名：")
     # classId = input("班号：")
