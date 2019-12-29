@@ -111,6 +111,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             choosedKindList.append(self.choose_form.item(i).text())
         for userItem in self.checkUserList:
             if userItem[3].isChecked():
+                self.textBrowser.setHtml("")
+                break
+        for userItem in self.checkUserList:
+            if userItem[3].isChecked():
                 result = ""
                 for choosedInfo in choosedKindList:
                     if choosedInfo == "name":
