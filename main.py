@@ -68,6 +68,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def loadUser(self):
         users = utils.loadUsers()
         # 清空准备重新更新
+        self.checkUserList = []
         self.tableWidget.setRowCount(0)
         for user in users:
             self.tableAddLine(user)
