@@ -81,11 +81,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         nameButton = self.choose_name
         customButton = self.choose_custom
         clearButton = self.clear_choose_button
+        removeButton = self.remove_user_button
         studentIdButton.clicked.connect(self.clickChooseStudent)
         classIdButton.clicked.connect(self.clickChooseClassId)
         nameButton.clicked.connect(self.clickChooseName)
         customButton.clicked.connect(self.clickChooseCustom)
         clearButton.clicked.connect(self.clickClear)
+        removeButton.clicked.connect(self.clickRemoveUser)
         self.generate_result_button.clicked.connect(self.generateResult)
 
     def clickChooseStudent(self):
@@ -109,6 +111,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             chooseList.takeItem(chooseList.currentRow())
 
+    def clickRemoveUser(self):
+        saveUserList = []
+        for userItem in self.checkUserList:
+            if not userItem[3].isChecked():
+                saveUserList.append(User(userItem[1], userItem[0], userItem[2]))
+        utils.saveUserList(saveUserList)
+        self.loadUser()
+
     # TODO 从choose_form得到已选，生成结果
     # TODO 读取已选的用户列表check box
     def generateResult(self):
@@ -116,9 +126,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         choosedKindList = []
         for i in range(self.choose_form.count()):
             choosedKindList.append(self.choose_form.item(i).text())
-        for userItem in self.checkUserList:
-            if userItem[3].isChecked():
-                self.textBrowser.setHtml("")
+        for useritem in self.checkUserList:
+            if useritem[3].isChecked():
+                self.textbrowser.sethtml("")
                 break
         for userItem in self.checkUserList:
             if userItem[3].isChecked():
