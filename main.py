@@ -5,6 +5,8 @@ from qtconsole.qt import QtCore
 from qtpy import QtWidgets
 from PyQt5.QtWidgets import *
 import sys
+import win32clipboard as w
+import win32con
 
 import utils
 from User import User
@@ -90,12 +92,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         clearButton.clicked.connect(self.clickClear)
         removeButton.clicked.connect(self.clickRemoveUser)
         self.generate_result_button.clicked.connect(self.generateResult)
+        self.generate_clipbord_button.clicked.connect(self.clickClipbord)
 
     def clickChooseStudent(self):
         wightItem = QListWidgetItem()
         wightItem.setText("学号")
         wightItem.setTextAlignment(Qt.AlignCenter)
-        wightItem.setSizeHint(QSize(100,32))
+        wightItem.setSizeHint(QSize(100, 32))
         self.choose_form.addItem(wightItem)
 
     def clickChooseClassId(self):
@@ -124,8 +127,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         utils.saveUserList(saveUserList)
         self.loadUser()
 
-    # TODO 从choose_form得到已选，生成结果
-    # TODO 读取已选的用户列表check box
+    def clickClipbord(self):
+        w.OpenClipboard()
+        w.EmptyClipboard()
+        # TODO 弹框提示 复制成功
+        w.SetClipboardData(win32con.CF_UNICODETEXT, self.textBrowser.toPlainText())
+        w.CloseClipboard()
+
     def generateResult(self):
         global result
         choosedKindList = []

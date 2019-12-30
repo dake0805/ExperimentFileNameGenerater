@@ -1,9 +1,1 @@
-{
-  "users": [
-    {
-      "studentId": "2017302611",
-      "name": "hzy",
-      "classId": "14011701"
-    }
-  ]
-}
+{"users": [{"studentId": "2017302611", "name": "hzy", "classId": "14011701"}, {"studentId": "2017302744", "name": "\u8c22\u5176\u9a8f", "classId": "14041705"}]}
