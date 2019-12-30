@@ -92,8 +92,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.generate_result_button.clicked.connect(self.generateResult)
 
     def clickChooseStudent(self):
-        wightItem = QListWidgetItem("学号")
-        wightItem.setSizeHint(QSize(5,22))
+        wightItem = QListWidgetItem()
+        wightItem.setText("学号")
+        wightItem.setTextAlignment(Qt.AlignCenter)
+        wightItem.setSizeHint(QSize(100,32))
         self.choose_form.addItem(wightItem)
 
     def clickChooseClassId(self):
