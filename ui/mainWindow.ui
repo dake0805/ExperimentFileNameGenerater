@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>417</height>
+    <width>814</width>
+    <height>478</height>
    </rect>
   </property>
   <property name="palette">
@@ -462,7 +462,7 @@
    <widget class="QPushButton" name="add_user_button">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>590</x>
       <y>10</y>
       <width>75</width>
       <height>29</height>
@@ -512,9 +512,9 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>401</width>
+      <x>30</x>
+      <y>10</y>
+      <width>421</width>
       <height>181</height>
      </rect>
     </property>
@@ -564,8 +564,8 @@
    <widget class="QPushButton" name="clear_choose_button">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>340</y>
+      <x>310</x>
+      <y>350</y>
       <width>75</width>
       <height>29</height>
      </rect>
@@ -612,10 +612,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QListWidget" name="choose_form">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>244</y>
+      <x>20</x>
+      <y>270</y>
       <width>401</width>
-      <height>71</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -626,8 +626,8 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI Light</family>
-      <pointsize>12</pointsize>
+      <family>Microsoft YaHei UI</family>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="frameShape">
@@ -646,8 +646,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QComboBox" name="choose_delimiter">
     <property name="geometry">
      <rect>
-      <x>554</x>
-      <y>79</y>
+      <x>560</x>
+      <y>160</y>
       <width>75</width>
       <height>27</height>
      </rect>
@@ -692,8 +692,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="generate_result_button">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>80</y>
+      <x>560</x>
+      <y>190</y>
       <width>75</width>
       <height>29</height>
      </rect>
@@ -708,14 +708,25 @@ p, li { white-space: pre-wrap; }
      <string>生成文本</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>220</y>
+      <width>401</width>
+      <height>38</height>
+     </rect>
+    </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>22</number>
+     </property>
      <item>
       <widget class="QPushButton" name="choose_studentId">
        <property name="font">
         <font>
          <family>Microsoft YaHei UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -737,7 +748,7 @@ p, li { white-space: pre-wrap; }
        <property name="font">
         <font>
          <family>Microsoft YaHei UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -759,7 +770,7 @@ p, li { white-space: pre-wrap; }
        <property name="font">
         <font>
          <family>Microsoft YaHei UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -781,7 +792,7 @@ p, li { white-space: pre-wrap; }
        <property name="font">
         <font>
          <family>Microsoft YaHei UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -803,13 +814,38 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="generate_clipbord_button">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>190</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft YaHei UI</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>复制到剪贴板</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>819</width>
+     <width>814</width>
      <height>21</height>
     </rect>
    </property>

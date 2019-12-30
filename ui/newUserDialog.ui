@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>413</width>
+    <height>288</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>230</y>
-     <width>195</width>
-     <height>30</height>
+     <x>9</x>
+     <y>147</y>
+     <width>158</width>
+     <height>25</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -39,26 +39,35 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QLineEdit" name="class_id">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>30</y>
-     <width>160</width>
-     <height>88</height>
+     <x>10</x>
+     <y>62</y>
+     <width>133</width>
+     <height>20</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLineEdit" name="name"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="student_id"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="class_id"/>
-    </item>
-   </layout>
+  </widget>
+  <widget class="QLineEdit" name="student_id">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>36</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="name">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

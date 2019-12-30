@@ -1,6 +1,6 @@
 from random import random
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 from qtconsole.qt import QtCore
 from qtpy import QtWidgets
 from PyQt5.QtWidgets import *
@@ -76,6 +76,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # click绑定可选择按钮
     # TODO 自定义，弹出Dialog完成自定义输入
     def toChooseListInit(self):
+        self.choose_form.setStyleSheet("QListWidget{border:0px solid gray; color:black; }")
         studentIdButton = self.choose_studentId
         classIdButton = self.choose_classId
         nameButton = self.choose_name
@@ -91,13 +92,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.generate_result_button.clicked.connect(self.generateResult)
 
     def clickChooseStudent(self):
-        self.choose_form.addItem("studentId")
+        wightItem = QListWidgetItem("学号")
+        wightItem.setSizeHint(QSize(5,22))
+        self.choose_form.addItem(wightItem)
 
     def clickChooseClassId(self):
-        self.choose_form.addItem("classId")
+        self.choose_form.addItem("班级")
 
     def clickChooseName(self):
-        self.choose_form.addItem("name")
+        self.choose_form.addItem("姓名")
 
     def clickChooseCustom(self):
         text, okPressed = QInputDialog.getText(self, "自定义", "Input:", QLineEdit.Normal, "")
@@ -134,11 +137,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if userItem[3].isChecked():
                 userInfoArray = []
                 for choosedInfo in choosedKindList:
-                    if choosedInfo == "name":
+                    if choosedInfo == "姓名":
                         userInfoArray.append(userItem[0])
-                    elif choosedInfo == "studentId":
+                    elif choosedInfo == "学号":
                         userInfoArray.append(userItem[1])
-                    elif choosedInfo == "classId":
+                    elif choosedInfo == "班级":
                         userInfoArray.append(userItem[2])
                     else:
                         userInfoArray.append(choosedInfo)
@@ -171,6 +174,8 @@ class AddUserDialog(QDialog, Ui_Dialog):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     win = MainWindow()
+    win.resize(720, 480)
+    win.setFixedSize(720, 480)
     win.show()
     sys.exit(app.exec_())
 
