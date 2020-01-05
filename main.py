@@ -184,8 +184,8 @@ class AddUserDialog(QDialog, Ui_Dialog):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     win = MainWindow()
-    win.resize(720, 480)
-    win.setFixedSize(720, 480)
+    win.resize(960, 540)
+    win.setFixedSize(960, 540)
     win.show()
     sys.exit(app.exec_())
 
